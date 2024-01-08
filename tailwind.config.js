@@ -4,5 +4,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("tailwindcss-rtl"), require("flowbite/plugin")],
+  plugins: [require("tailwindcss-rtl")],
 };

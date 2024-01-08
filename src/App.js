@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import Header from "../src/components/Header";
-import Footer from "../src/components/Footer";
+// import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import { AllRoutes } from "./routes/AllRoutes";
 
@@ -13,7 +13,7 @@ function App() {
       <AllRoutes />
       <Header links={linksArray} />
       <Card />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

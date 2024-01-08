@@ -7,7 +7,7 @@ const Footer = () => {
       <Container>
         <Toolbar>
           <Typography variant="body1" color="inherit">
-            © {new Date().getFullYear()} Your Website Name. All rights reserved.
+            Hi
           </Typography>
         </Toolbar>
       </Container>
