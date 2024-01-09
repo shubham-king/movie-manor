@@ -1,3 +1,4 @@
+// Header.jsx
 import React from "react";
 import {
   AppBar,
@@ -15,6 +16,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
 import DrawerComp from "./DrawerComp";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -63,9 +65,17 @@ function Header({ links, darkMode, toggleDarkMode }) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
 
   const handleDarkModeToggle = () => {
     toggleDarkMode();
+  };
+
+  const handleTabClick = (index, route) => {
+    setValue(index);
+    const targetRoute =
+      route.toLowerCase() === "home" ? "/" : route.toLowerCase();
+    navigate(targetRoute);
   };
 
   return (
@@ -127,7 +137,11 @@ function Header({ links, darkMode, toggleDarkMode }) {
                   onChange={(e, val) => setValue(val)}
                 >
                   {links.map((link, index) => (
-                    <Tab key={index} label={link} />
+                    <Tab
+                      key={index}
+                      label={link}
+                      onClick={() => handleTabClick(index, link.toLowerCase())}
+                    />
                   ))}
                 </Tabs>
               </Grid>
