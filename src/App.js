@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import Header from "../src/components/Header";
-import Card from "../src/components/Card";
+import MovieList from "../src/pages/MovieList";
 import { AllRoutes } from "./routes/AllRoutes";
 import { createTheme } from "@mui/material/styles";
 
@@ -29,8 +29,11 @@ function App() {
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
       />
-      <Card />
-      <AllRoutes />
+      <div style={{ marginTop: "78px" }}>
+        {" "}
+        {/* 64px is the default height of AppBar */}
+        <AllRoutes />
+      </div>
     </ThemeProvider>
   );
 }
