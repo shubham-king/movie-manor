@@ -1,20 +1,37 @@
+import React, { useState } from "react";
 import "./App.css";
-import React from "react";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 import Header from "../src/components/Header";
-// import Footer from "../src/components/Footer";
 import Card from "../src/components/Card";
 import { AllRoutes } from "./routes/AllRoutes";
+import { createTheme } from "@mui/material/styles";
 
 const linksArray = ["Home", "Popular", "Top Rated", "Upcoming"];
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+    },
+  });
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
   return (
-    <div className="App">
-      <AllRoutes />
-      <Header links={linksArray} />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header
+        links={linksArray}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+      />
       <Card />
-      {/* <Footer /> */}
-    </div>
+      <AllRoutes />
+    </ThemeProvider>
   );
 }
 
