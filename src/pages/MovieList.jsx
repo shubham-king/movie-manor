@@ -1,3 +1,4 @@
+// MovieList.jsx
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import Card from "@mui/material/Card";
@@ -42,7 +43,6 @@ export const MovieList = ({ apiPath }) => {
                       <CardMedia
                         component="img"
                         height="450"
-                        // Adjust the height as needed to fit the image
                         image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                         alt={movie.original_title}
                       />
