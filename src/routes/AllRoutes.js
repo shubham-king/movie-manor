@@ -6,13 +6,9 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MovieList apiPath="now_playing" />} />
+      <Route path="popular" element={<MovieList apiPath="top_rated" />} />
+      <Route path="upcoming" element={<MovieList apiPath="upcoming" />} />
       <Route path="movie/:id" element={<MovieDetail />} />
-      <Route path="movies/popular" element={<MovieList apiPath="popular" />} />
-      <Route path="movies/top" element={<MovieList apiPath="top_rated" />} />
-      <Route
-        path="/movies/upcoming"
-        element={<MovieList apiPath="upcoming" />}
-      />
       <Route path="search" element={<Search />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>

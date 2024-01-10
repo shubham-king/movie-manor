@@ -6,7 +6,7 @@ import Header from "../src/components/Header";
 import AllRoutes from "./routes/AllRoutes";
 import { createTheme } from "@mui/material/styles";
 
-const linksArray = ["Home", "Popular", "Top Rated", "Upcoming"];
+const linksArray = ["Home", "Popular", "Upcoming"];
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);

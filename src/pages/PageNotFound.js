@@ -1,3 +1,3 @@
 export const PageNotFound = () => {
-  return <main>PageNotFound</main>;
+  return <main>PageNotFound try again!</main>;
 };
