@@ -8,10 +8,8 @@ import { CardActionArea } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
-export const MovieList = () => {
-  const { data: movies, loading } = useFetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=23b631df0322d474f7811f15a02c4a86"
-  );
+export const MovieList = ({ apiPath }) => {
+  const { data: movies, loading } = useFetch(apiPath);
 
   return (
     <Box
@@ -43,7 +41,8 @@ export const MovieList = () => {
                     <CardActionArea>
                       <CardMedia
                         component="img"
-                        height="450" // Adjust the height as needed
+                        height="450"
+                        // Adjust the height as needed to fit the image
                         image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                         alt={movie.original_title}
                       />
