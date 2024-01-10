@@ -1,3 +1,4 @@
+// Search.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -13,10 +14,10 @@ import { useSearchParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { useTitle } from "../hooks/useTitle";
 
-const Search = ({ apiPath }) => {
+const Search = () => {
   const [searchParams] = useSearchParams();
   const queryTerm = searchParams.get("q");
-  const { data: movies, loading } = useFetch(apiPath, queryTerm);
+  const { data: movies, loading } = useFetch("search/movie", queryTerm);
 
   useTitle(`Search result for ${queryTerm}`);
 
@@ -26,7 +27,7 @@ const Search = ({ apiPath }) => {
         className="py-7"
         sx={{ textAlign: "center", color: "#374151", padding: "16px" }}
       >
-        <Typography variant="h4">
+        <Typography variant="h3">
           {loading
             ? "Loading..."
             : movies.length === 0

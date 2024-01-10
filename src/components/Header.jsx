@@ -16,7 +16,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
 import DrawerComp from "./DrawerComp";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -78,6 +78,11 @@ function Header({ links, darkMode, toggleDarkMode }) {
     navigate(targetRoute);
   };
 
+  const handleSearch = (query) => {
+    // Navigate to the search page with the provided query
+    navigate(`/search?q=${query}`);
+  };
+
   return (
     <>
       <AppBar
@@ -111,6 +116,11 @@ function Header({ links, darkMode, toggleDarkMode }) {
                     <StyledInputBase
                       placeholder="Search…"
                       inputProps={{ "aria-label": "search" }}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleSearch(e.target.value);
+                        }
+                      }}
                     />
                   </Search>
                 </Grid>
@@ -153,6 +163,11 @@ function Header({ links, darkMode, toggleDarkMode }) {
                   <StyledInputBase
                     placeholder="Search…"
                     inputProps={{ "aria-label": "search" }}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSearch(e.target.value);
+                      }
+                    }}
                   />
                 </Search>
               </Grid>
