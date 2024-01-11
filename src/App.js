@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import AllRoutes from "./routes/AllRoutes";
 import { createTheme } from "@mui/material/styles";
 
@@ -30,6 +31,7 @@ function App() {
       <div style={{ marginTop: "78px" }}>
         <AllRoutes />
       </div>
+      <Footer />
     </ThemeProvider>
   );
 }
