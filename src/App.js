@@ -37,12 +37,3 @@ function App() {
 }
 
 export default App;
-
-// Now Playing:
-// https://api.themoviedb.org/3/movie/now_playing?api_key=23b631df0322d474f7811f15a02c4a86
-
-// Top Rated:
-// https://api.themoviedb.org/3/movie/top_rated?api_key=23b631df0322d474f7811f15a02c4a86
-
-// Upcoming:
-// https://api.themoviedb.org/3/movie/upcoming?api_key=23b631df0322d474f7811f15a02c4a86
