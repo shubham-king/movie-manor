@@ -1,5 +1,4 @@
-// Search.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -21,11 +20,20 @@ const Search = () => {
 
   useTitle(`Search result for ${queryTerm}`);
 
+  const [readMore, setReadMore] = useState({});
+
+  const handleReadMore = (id) => {
+    setReadMore((prevReadMore) => ({
+      ...prevReadMore,
+      [id]: !prevReadMore[id],
+    }));
+  };
+
   return (
     <main>
       <section
         className="py-7"
-        sx={{ textAlign: "center", color: "#374151", padding: "16px" }}
+        sx={{ textAlign: "center", color: "rgb(55, 65, 81)", padding: "16px" }}
       >
         <Typography variant="h3">
           {loading
@@ -51,11 +59,10 @@ const Search = () => {
                   sx={{
                     maxWidth: 345,
                     backgroundColor: "white",
-                    borderRadius: "8px",
-                    border: "1px solid #E5E7EB",
                     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                     margin: "16px",
                     height: "100%",
+                    borderRadius: "0", // Square corners
                   }}
                 >
                   <Link to={`/movie/${movie.id}`}>
@@ -69,8 +76,8 @@ const Search = () => {
                       }
                       alt=""
                       sx={{
-                        borderTopLeftRadius: "8px",
-                        borderTopRightRadius: "8px",
+                        borderTopLeftRadius: "0", // Square corners
+                        borderTopRightRadius: "0", // Square corners
                       }}
                     />
                   </Link>
@@ -80,7 +87,7 @@ const Search = () => {
                         variant="h5"
                         sx={{
                           fontWeight: "bold",
-                          color: "#374151",
+                          color: "rgb(55, 65, 81)",
                           textDecoration: "none",
                         }}
                       >
@@ -90,9 +97,18 @@ const Search = () => {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ color: "#6B7280" }}
+                      sx={{ color: "rgb(107, 114, 128)" }}
                     >
-                      {movie.overview}
+                      {readMore[movie.id]
+                        ? movie.overview
+                        : `${movie.overview.slice(0, 150)}...`}
+                      <Typography
+                        component="span"
+                        sx={{ color: "rgb(30, 58, 138)", cursor: "pointer" }}
+                        onClick={() => handleReadMore(movie.id)}
+                      >
+                        {readMore[movie.id] ? " Read less" : " Read more"}
+                      </Typography>
                     </Typography>
                   </CardContent>
                 </Card>

@@ -57,6 +57,26 @@ const MovieDetail = () => {
                 <Typography variant="h6" color="text.secondary">
                   {movie.overview}
                 </Typography>
+                {movie.genres && movie.genres.length > 0 && (
+                  <Typography gutterBottom variant="h6">
+                    <b>Genres:</b>{" "}
+                    {movie.genres.map((genre) => (
+                      <span
+                        key={genre.id}
+                        style={{
+                          marginRight: "4px",
+                          border: "1px solid #ccc",
+                          padding: "2px",
+                          borderRadius: "4px",
+                          display: "inline-block",
+                          background: "rgb(150,150,150)",
+                        }}
+                      >
+                        {genre.name}
+                      </span>
+                    ))}
+                  </Typography>
+                )}
                 <Typography gutterBottom variant="h6" component="div">
                   <b>Runtime:</b> {movie.runtime} minutes
                 </Typography>
