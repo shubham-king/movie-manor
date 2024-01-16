@@ -51,7 +51,12 @@ const MovieDetail = () => {
           <Box height="100">
             <Card>
               <CardContent md={{ border: "none", borderRadius: "0" }}>
-                <Typography gutterBottom variant="h3" component="div">
+                <Typography
+                  gutterBottom
+                  variant="h4"
+                  component="div"
+                  sx={{ flexWrap: "wrap" }}
+                >
                   {movie.title}
                 </Typography>
                 <Typography variant="h6" color="text.secondary">
@@ -77,7 +82,7 @@ const MovieDetail = () => {
                     ))}
                   </Typography>
                 )}
-                <Typography gutterBottom variant="h6" component="div">
+                <Typography gutterBottom variant="h" component="div">
                   <b>Runtime:</b> {movie.runtime} minutes
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">

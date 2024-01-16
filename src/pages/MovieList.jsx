@@ -24,7 +24,7 @@ export const MovieList = ({ apiPath }) => {
   const [maxTextLength, setMaxTextLength] = useState(150);
 
   const handleReadMore = () => {
-    setMaxTextLength((prev) => (prev === 150 ? 10000 : 150)); // Toggle between showing full text and truncated text
+    setMaxTextLength((prev) => (prev === 150 ? 10000 : 150));
   };
 
   return (
@@ -32,18 +32,19 @@ export const MovieList = ({ apiPath }) => {
       sx={{
         paddingX: "6em",
         paddingY: "2em",
+        display: "flex",
+        justifyContent: "center", // Center the entire content
       }}
     >
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "center",
+          width: "100%", // Make sure the content takes full width
         }}
       >
         {loading ? (
           <Typography variant="h6">Loading...</Typography>
         ) : (
-          <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+          <Grid container spacing={6} sx={{ justifyContent: "center" }}>
             {movies.map((movie) => (
               <Grid
                 item
@@ -62,19 +63,25 @@ export const MovieList = ({ apiPath }) => {
                     sx={{
                       minHeight: "100%",
                       maxHeight: "100%",
-                      padding: 5,
+                      padding: 0,
                       display: "flex",
                       flexDirection: "column",
                     }}
                   >
                     <CardMedia
                       component="img"
-                      height="auto" // Allow the image to adjust its height
-                      width="100%" // Set width to 100%
+                      height="auto"
+                      width="100%"
                       image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt={movie.original_title}
                     />
-                    <CardContent sx={{ padding: 2, flex: 1 }}>
+                    <CardContent
+                      sx={{
+                        padding: 2,
+                        flex: 1,
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      }}
+                    >
                       <Typography
                         gutterBottom
                         variant="h5"
@@ -90,7 +97,7 @@ export const MovieList = ({ apiPath }) => {
                           onClick={handleReadMore}
                           sx={{ cursor: "pointer" }}
                         >
-                          {maxTextLength === 150 ? " Read more" : " Read less"}
+                          {maxTextLength === 110 ? " Read more" : " Read less"}
                         </MuiLink>
                       </Typography>
                     </CardContent>

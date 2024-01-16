@@ -1,70 +1,53 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { styled } from "@mui/system";
-import { Box, Typography, List, ListItem } from "@mui/material";
+import { Box, Typography, List, ListItem, Link, Grid } from "@mui/material";
 
-const FooterContainer = styled("footer")(({ theme }) => ({
+const FooterContainer = (theme) => ({
   padding: theme.spacing(4),
   backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(5,49,60,1)" : "rgba(0,143,180,1)",
+    theme.palette.mode === "dark" ? "rgba(0,0,0)" : "rgba(0,143,180,1)",
   color: theme.palette.primary.contrastText,
-}));
-
-const FooterLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
-  textDecoration: "none",
-  marginRight: theme.spacing(4),
-  "&:hover": {
-    textDecoration: "underline",
-  },
-}));
-
-const ExternalLink = styled("a")(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
-  textDecoration: "none",
-  marginRight: theme.spacing(4),
-  "&:hover": {
-    textDecoration: "underline",
-  },
-}));
+});
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="body2" color="inherit">
-          © 2030{" "}
-          <Link to="/" component={FooterLink}>
-            MovieManor
-          </Link>
-          . All Rights Reserved.
-        </Typography>
-        <List
-          component="nav"
-          aria-labelledby="footer-links"
-          sx={{ display: "flex" }}
-        >
-          <ListItem>
-            <ExternalLink
-              href="https://www.linkedin.com/in/frances-l-hughes/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </ExternalLink>
-          </ListItem>
-          <ListItem>
-            <ExternalLink
-              href="https://github.com/Frances-Hughes"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github
-            </ExternalLink>
-          </ListItem>
-        </List>
-      </Box>
-    </FooterContainer>
+    <Box component="footer" sx={(theme) => FooterContainer(theme)}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="body2" color="white">
+            <List>
+              <ListItem>
+                <Link
+                  href="https://www.linkedin.com/in/frances-l-hughes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="white"
+                  underline="hover"
+                >
+                  LinkedIn
+                </Link>
+              </ListItem>
+            </List>
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography variant="body2" color="white">
+            <List>
+              <ListItem>
+                <Link
+                  href="https://github.com/Frances-Hughes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="white"
+                  underline="hover"
+                >
+                  Github
+                </Link>
+              </ListItem>
+            </List>
+          </Typography>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

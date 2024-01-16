@@ -88,8 +88,8 @@ function Header({ links, darkMode, toggleDarkMode }) {
       <AppBar
         sx={{
           backgroundImage: `linear-gradient(45deg, ${
-            darkMode ? "rgba(5,49,60,1)" : "rgba(0,143,180,1)"
-          } 10%, ${darkMode ? "rgba(5,49,60,1)" : "rgba(0,143,180,1)"} 54%)`,
+            darkMode ? "#0C0B0A" : "rgba(0,143,180,1)"
+          } 10%, ${darkMode ? "#989898" : "#06beb6"} 54%)`,
         }}
       >
         <Toolbar>
