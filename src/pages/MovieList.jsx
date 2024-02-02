@@ -52,7 +52,7 @@ export const MovieList = ({ apiPath }) => {
     <Box
       sx={{
         paddingX: "6em",
-        paddingY: "2em",
+        paddingBottom: "6em",
         display: "flex",
         justifyContent: "center",
       }}

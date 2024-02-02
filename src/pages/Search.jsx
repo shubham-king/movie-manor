@@ -1,17 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Box,
-  Grid,
-} from "@mui/material";
-import Backup from "../assets/images/backup.png";
 import { useSearchParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { useTitle } from "../hooks/useTitle";
+import {
+  Typography,
+  Box,
+  Grid,
+  CardContent,
+  CardMedia,
+  Card,
+  Link as MuiLink,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import Backup from "../assets/images/backup.png";
+
+const truncateText = (text, maxLength) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return `${text.slice(0, maxLength)}...`;
+};
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -20,104 +29,130 @@ const Search = () => {
 
   useTitle(`Search result for ${queryTerm}`);
 
-  const [readMore, setReadMore] = useState({});
+  const [maxTextLength, setMaxTextLength] = useState(150);
 
-  const handleReadMore = (id) => {
-    setReadMore((prevReadMore) => ({
-      ...prevReadMore,
-      [id]: !prevReadMore[id],
-    }));
+  const handleReadMore = () => {
+    setMaxTextLength((prev) => (prev === 150 ? 10000 : 150));
+  };
+
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
   };
 
   return (
-    <main>
-      <section
-        className="py-7"
-        sx={{ textAlign: "center", color: "rgb(55, 65, 81)", padding: "16px" }}
-      >
-        <Typography variant="h3">
+    <Box
+      sx={{
+        paddingX: "6em",
+        paddingY: "2em",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Box sx={{ width: "100%" }}>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: "bold",
+            padding: 5,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           {loading
             ? "Loading..."
             : movies.length === 0
             ? `No results found for '${queryTerm}'`
-            : `Results for '${queryTerm}'`}
+            : `Search results for '${queryTerm}'`}
         </Typography>
-      </section>
-      <section className="max-w-7xl mx-auto py-7">
-        <Grid container spacing={2}>
-          {movies.map((movie) => (
-            <Grid item xs={12} sm={6} md={4} key={movie.id}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100%",
-                }}
-              >
-                <Card
-                  sx={{
-                    maxWidth: 345,
-                    backgroundColor: "white",
-                    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-                    margin: "16px",
-                    height: "100%",
-                    borderRadius: "0", // Square corners
-                  }}
-                >
-                  <Link to={`/movie/${movie.id}`}>
-                    <CardMedia
-                      component="img"
-                      height="auto"
-                      src={
-                        movie.poster_path
-                          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                          : Backup
-                      }
-                      alt=""
-                      sx={{
-                        borderTopLeftRadius: "0", // Square corners
-                        borderTopRightRadius: "0", // Square corners
-                      }}
-                    />
-                  </Link>
-                  <CardContent>
-                    <Link to={`/movie/${movie.id}`}>
-                      <Typography
-                        variant="h5"
+        {loading ? (
+          <Typography variant="h6">Loading...</Typography>
+        ) : (
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            sx={{ justifyContent: "center" }}
+          >
+            <Grid container spacing={3}>
+              {movies.map((movie) => (
+                <Grid item xs={12} sm={6} md={4} lg={2} key={movie.id}>
+                  <motion.div variants={item} style={{ height: "100%" }}>
+                    <MuiLink
+                      component={Link}
+                      to={`/movie/${movie.id}`}
+                      underline="none"
+                    >
+                      <Card
                         sx={{
-                          fontWeight: "bold",
-                          color: "rgb(55, 65, 81)",
-                          textDecoration: "none",
+                          minHeight: "100%",
+                          maxHeight: "100%",
+                          display: "flex",
+                          flexDirection: "column",
                         }}
                       >
-                        {movie.original_title}
-                      </Typography>
-                    </Link>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ color: "rgb(107, 114, 128)" }}
-                    >
-                      {readMore[movie.id]
-                        ? movie.overview
-                        : `${movie.overview.slice(0, 150)}...`}
-                      <Typography
-                        component="span"
-                        sx={{ color: "rgb(30, 58, 138)", cursor: "pointer" }}
-                        onClick={() => handleReadMore(movie.id)}
-                      >
-                        {readMore[movie.id] ? " Read less" : " Read more"}
-                      </Typography>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
+                        <CardMedia
+                          component="img"
+                          height="auto"
+                          width="100%"
+                          src={
+                            movie.poster_path
+                              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                              : Backup
+                          }
+                          alt={movie.original_title}
+                          sx={{ objectFit: "contain" }}
+                        />
+                        <CardContent
+                          sx={{
+                            padding: 2,
+                            flex: 1,
+                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                          }}
+                        >
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            {movie.original_title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {truncateText(movie.overview, maxTextLength)}
+                            <MuiLink
+                              component="span"
+                              onClick={handleReadMore}
+                              sx={{ cursor: "pointer" }}
+                            >
+                              {maxTextLength === 150
+                                ? " Read more"
+                                : " Read less"}
+                            </MuiLink>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </MuiLink>
+                  </motion.div>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </section>
-    </main>
+          </motion.div>
+        )}
+      </Box>
+    </Box>
   );
 };
 
