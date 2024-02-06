@@ -89,7 +89,11 @@ const Search = () => {
             <Grid container spacing={3}>
               {movies.map((movie) => (
                 <Grid item xs={12} sm={6} md={4} lg={2} key={movie.id}>
-                  <motion.div variants={item} style={{ height: "100%" }}>
+                  <motion.div
+                    variants={item}
+                    style={{ height: "100%" }}
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <MuiLink
                       component={Link}
                       to={`/movie/${movie.id}`}

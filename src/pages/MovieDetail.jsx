@@ -28,8 +28,8 @@ const MovieDetail = () => {
   }
 
   return (
-    <Container sx={{ padding: "36px" }}>
-      <Grid container spacing={2}>
+    <Container sx={{ maxHeight: "100%" }}>
+      <Grid container spacing={2} sx={{ mb: 9 }}>
         <Grid item xs={12} md={6}>
           <Card>
             <CardMedia
@@ -46,7 +46,6 @@ const MovieDetail = () => {
           </Card>
         </Grid>
 
-        {/* Right side Box*/}
         <Grid item xs={12} md={6}>
           <Box height="100">
             <Card>
