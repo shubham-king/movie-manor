@@ -16,6 +16,9 @@ function App() {
     palette: {
       mode: darkMode ? "dark" : "light",
     },
+    typography: {
+      fontFamily: ["Chakra Petch", "Caudex", "serif"].join(","),
+    },
   });
 
   const toggleDarkMode = () => {
