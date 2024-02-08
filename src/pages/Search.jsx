@@ -109,21 +109,16 @@ const Search = () => {
                       >
                         <CardMedia
                           component="img"
-                          height="auto"
+                          height="400px"
                           width="100%"
-                          src={
-                            movie.poster_path
-                              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                              : Backup
-                          }
+                          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                           alt={movie.original_title}
-                          sx={{ objectFit: "contain" }}
                         />
                         <CardContent
                           sx={{
                             padding: 2,
                             flex: 1,
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                            backgroundColor: "rgb(12,20,255, 0.1)",
                           }}
                         >
                           <Typography

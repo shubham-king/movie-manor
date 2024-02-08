@@ -94,7 +94,7 @@ export const MovieList = ({ apiPath }) => {
                       >
                         <CardMedia
                           component="img"
-                          height="auto"
+                          height="400px"
                           width="100%"
                           image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                           alt={movie.original_title}
@@ -103,7 +103,7 @@ export const MovieList = ({ apiPath }) => {
                           sx={{
                             padding: 2,
                             flex: 1,
-                            backgroundColor: "rgba(12,20,45, 0.1)", //to be changed later
+                            backgroundColor: "rgb(12,20,255, 0.1)",
                           }}
                         >
                           <Typography

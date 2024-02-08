@@ -49,7 +49,10 @@ const MovieDetail = () => {
         <Grid item xs={12} md={6}>
           <Box height="100">
             <Card>
-              <CardContent md={{ border: "none", borderRadius: "0" }}>
+              <CardContent
+                md={{ border: "none", borderRadius: "0" }}
+                sx={{ backgroundColor: "rgb(12,20,255, 0.1)" }}
+              >
                 <Typography
                   gutterBottom
                   variant="h3"
@@ -73,7 +76,7 @@ const MovieDetail = () => {
                           padding: "2px",
                           borderRadius: "4px",
                           display: "inline-block",
-                          background: "rgb(12,20,45, 0.3)",
+                          background: "rgb(49, 82, 189, 0.5)",
                         }}
                       >
                         {genre.name}
