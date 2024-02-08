@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Link, Grid } from "@mui/material";
+import { Box, Container, Link, Grid, Tooltip } from "@mui/material";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -25,26 +25,42 @@ const Footer = () => {
           sx={{ justifyContent: "center", textAlign: "center" }}
         >
           <Grid item xs={6}>
-            <Link
-              href="https://www.linkedin.com/in/frances-l-hughes/"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="#fff"
-              underline="hover"
-            >
-              <LinkedInIcon />
-            </Link>
+            <Tooltip title="Visit my LinkedIn page" placement="top">
+              <Link
+                href="https://www.linkedin.com/in/frances-l-hughes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                color="#fff"
+                underline="hover"
+              >
+                <LinkedInIcon
+                  sx={{
+                    "&&:hover": {
+                      transform: "scale(1.2)",
+                    },
+                  }}
+                />
+              </Link>
+            </Tooltip>
           </Grid>
           <Grid item xs={6}>
-            <Link
-              href="https://github.com/Frances-Hughes"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="#fff"
-              underline="hover"
-            >
-              <GitHubIcon />
-            </Link>
+            <Tooltip title="Link to this repository" placement="top">
+              <Link
+                href="https://github.com/Frances-Hughes/movie-manor"
+                target="_blank"
+                rel="noopener noreferrer"
+                color="#fff"
+                underline="hover"
+              >
+                <GitHubIcon
+                  sx={{
+                    "&:hover": {
+                      transform: "scale(1.2)",
+                    },
+                  }}
+                />
+              </Link>
+            </Tooltip>
           </Grid>
         </Grid>
       </Box>
