@@ -25,7 +25,7 @@ function DrawerComp({ links }) {
     <>
       <Drawer
         PaperProps={{
-          sx: { backgroundColor: "rgba(0,0,0, 0.3)" },
+          sx: { backgroundColor: "rgba(0,0,0, 0.2)" },
         }}
         open={open}
         onClose={() => setOpen(false)}

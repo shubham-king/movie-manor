@@ -103,7 +103,7 @@ export const MovieList = ({ apiPath }) => {
                           sx={{
                             padding: 2,
                             flex: 1,
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                            backgroundColor: "rgba(12,20,45, 0.1)", //to be changed later
                           }}
                         >
                           <Typography

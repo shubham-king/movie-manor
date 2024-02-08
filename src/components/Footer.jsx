@@ -11,8 +11,7 @@ const FooterContainer = (theme) => ({
   width: "100%",
   margin: 0,
   padding: 1,
-  backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0)" : "rgba(0,143,180,1)",
+  backgroundColor: theme.palette.mode === "dark" ? "#0c142d" : "#3152bd",
   color: theme.palette.primary.contrastText,
 });
 

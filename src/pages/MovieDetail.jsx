@@ -52,20 +52,20 @@ const MovieDetail = () => {
               <CardContent md={{ border: "none", borderRadius: "0" }}>
                 <Typography
                   gutterBottom
-                  variant="h4"
+                  variant="h3"
                   component="div"
                   sx={{ flexWrap: "wrap" }}
                 >
                   {movie.title}
                 </Typography>
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h7" color="text.secondary">
                   {movie.overview}
                 </Typography>
                 {movie.genres && movie.genres.length > 0 && (
                   <Typography gutterBottom variant="h6">
                     <b>Genres:</b>{" "}
                     {movie.genres.map((genre) => (
-                      <span
+                      <Typography
                         key={genre.id}
                         style={{
                           marginRight: "4px",
@@ -73,15 +73,15 @@ const MovieDetail = () => {
                           padding: "2px",
                           borderRadius: "4px",
                           display: "inline-block",
-                          background: "rgb(150,150,150)",
+                          background: "rgb(12,20,45, 0.3)",
                         }}
                       >
                         {genre.name}
-                      </span>
+                      </Typography>
                     ))}
                   </Typography>
                 )}
-                <Typography gutterBottom variant="h" component="div">
+                <Typography gutterBottom variant="h6" component="div">
                   <b>Runtime:</b> {movie.runtime} minutes
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
