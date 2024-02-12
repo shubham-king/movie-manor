@@ -6,11 +6,12 @@ import AllRoutes from "./routes/AllRoutes";
 import { createTheme } from "@mui/material/styles";
 import DarkModeToggle from "./components/DarkModeToggle";
 import Granim from "granim";
+import CustomModal from "./components/CustomModal";
 
 const linksArray = ["Home", "Popular", "Upcoming"];
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const theme = createTheme({
     palette: {
@@ -76,8 +77,9 @@ function App() {
           zIndex: -1,
         }}
       />
-      <div style={{ marginTop: "78px" }}>
+      <div style={{ marginTop: "67px" }}>
         <AllRoutes />
+        <CustomModal />
       </div>
       <Footer />
     </ThemeProvider>
