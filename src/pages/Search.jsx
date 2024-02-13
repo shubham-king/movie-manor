@@ -62,6 +62,7 @@ const Search = () => {
       }}
     >
       <Box sx={{ width: "100%" }}>
+        {/* Consolidated Loading and Result Message */}
         <Typography
           variant="h3"
           sx={{
@@ -77,9 +78,7 @@ const Search = () => {
             ? `No results found for '${queryTerm}'`
             : `Search results for '${queryTerm}'`}
         </Typography>
-        {loading ? (
-          <Typography variant="h6">Loading...</Typography>
-        ) : (
+        {!loading && (
           <motion.div
             variants={container}
             initial="hidden"
@@ -118,7 +117,7 @@ const Search = () => {
                           sx={{
                             padding: 2,
                             flex: 1,
-                            backgroundColor: "rgb(12,20,255, 0.1)",
+                            backgroundColor: "rgba(12,20,255, 0.1)",
                           }}
                         >
                           <Typography

@@ -1,3 +1,4 @@
+// MovieList.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useFetch } from "../hooks/useFetch";
@@ -13,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 
 export const MovieList = ({ apiPath }) => {
-  const { data: movies, loading } = useFetch(apiPath);
+  const { data: movies, loading, error } = useFetch(apiPath);
   const [maxTextLength, setMaxTextLength] = useState(150);
 
   const truncateText = (text, maxLength) => {
@@ -62,9 +63,25 @@ export const MovieList = ({ apiPath }) => {
           width: "100%",
         }}
       >
-        {loading ? (
-          <Typography variant="h6">Loading...</Typography>
-        ) : (
+        {loading && (
+          <Typography
+            variant="body2"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              fontSize: 18,
+            }}
+          >
+            Loading...
+          </Typography>
+        )}
+        {error && (
+          <Typography variant="h6" color="error">
+            Error: {error.message}
+          </Typography>
+        )}
+        {!loading && !error && (
           <motion.div
             variants={container}
             initial="hidden"
@@ -94,8 +111,7 @@ export const MovieList = ({ apiPath }) => {
                       >
                         <CardMedia
                           component="img"
-                          height="400px"
-                          width="100%"
+                          height="400"
                           image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                           alt={movie.original_title}
                         />
@@ -103,7 +119,7 @@ export const MovieList = ({ apiPath }) => {
                           sx={{
                             padding: 2,
                             flex: 1,
-                            backgroundColor: "rgb(12,20,255, 0.1)",
+                            backgroundColor: "rgba(12,20,255, 0.1)",
                           }}
                         >
                           <Typography
