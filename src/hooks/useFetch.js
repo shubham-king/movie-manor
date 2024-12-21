@@ -6,7 +6,7 @@ export const useFetch = (apiPath, queryTerm = "") => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Added error state
 
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = "bc5c5028814a76128b8d34dcad9f9e72";
   const baseUrl = "https://api.themoviedb.org/3/";
   const url = `${baseUrl}${apiPath}?api_key=${apiKey}&query=${queryTerm}`;
 
